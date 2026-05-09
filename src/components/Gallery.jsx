@@ -148,6 +148,7 @@ export default function Gallery() {
 
   const onMouseMove = useCallback((e) => moveBy(e.clientX, e.clientY), [moveBy])
   const onTouchMove = useCallback((e) => {
+    if (dragging.current === null) return
     e.preventDefault()
     moveBy(e.touches[0].clientX, e.touches[0].clientY)
   }, [moveBy])
