@@ -1,0 +1,184 @@
+.criminal {
+  background: var(--paper);
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 27px,
+      rgba(139, 99, 86, 0.07) 28px
+    );
+  padding: 80px 20px 100px;
+}
+
+.criminal-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 52px;
+}
+
+/* ---- HEADER ---- */
+.criminal-header {
+  text-align: center;
+}
+
+.criminal-label {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--muted-red);
+  display: block;
+  margin-bottom: 10px;
+}
+
+.criminal-title {
+  font-family: var(--font-hand);
+  font-size: clamp(2.4rem, 7vw, 4rem);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+  position: relative;
+  display: inline-block;
+}
+
+.criminal-title::after {
+  content: '';
+  display: block;
+  height: 3px;
+  width: 60%;
+  background: var(--muted-red);
+  margin: 8px auto 0;
+  opacity: 0.5;
+  border-radius: 1px;
+}
+
+.criminal-sub {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--ink-light);
+  margin-top: 14px;
+  font-style: italic;
+}
+
+/* ---- GRID ---- */
+.crimes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 28px 20px;
+}
+
+/* ---- CARD ---- */
+.crime-card {
+  background: #fdf6e3;
+  border: 1px solid rgba(139, 99, 86, 0.15);
+  padding: 28px 20px 22px;
+  position: relative;
+  box-shadow: 3px 4px 0 rgba(139, 99, 86, 0.12), 6px 8px 20px rgba(0,0,0,0.08);
+  opacity: 0;
+  transform: rotate(0deg) translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+}
+
+.crime-card--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.crime-card:hover {
+  box-shadow: 4px 6px 0 rgba(139, 99, 86, 0.2), 8px 12px 28px rgba(0,0,0,0.14);
+  z-index: 2;
+}
+
+/* Pin */
+.crime-pin {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #d4453e, #8b2020);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.35), 0 0 0 1px rgba(0,0,0,0.1);
+}
+
+.crime-pin::after {
+  content: '';
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 18px;
+  background: linear-gradient(to bottom, #aaa, #888);
+  border-radius: 1px;
+}
+
+/* Year */
+.crime-year {
+  font-family: var(--font-hand);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--muted-red);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+/* Text */
+.crime-text {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--ink);
+  line-height: 1.65;
+}
+
+/* Stamp */
+.crime-stamp {
+  font-family: var(--font-body);
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted-red);
+  border: 2px solid var(--muted-red);
+  display: inline-block;
+  padding: 2px 8px;
+  margin-top: 14px;
+  opacity: 0.55;
+  transform: rotate(-3deg);
+  position: relative;
+}
+
+/* ---- FOOTER ---- */
+.criminal-footer {
+  text-align: center;
+}
+
+.criminal-end {
+  font-family: var(--font-hand);
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  font-weight: 600;
+  color: var(--ink);
+  font-style: italic;
+}
+
+.doodle-line {
+  color: var(--warm-brown-light);
+  opacity: 0.4;
+  font-size: 1rem;
+  margin-top: 12px;
+  letter-spacing: 0.05em;
+}
+
+/* ---- MOBILE ---- */
+@media (max-width: 600px) {
+  .criminal { padding: 60px 16px 80px; }
+  .crimes-grid { grid-template-columns: 1fr 1fr; gap: 20px 14px; }
+  .crime-card { padding: 22px 14px 18px; }
+  .crime-text { font-size: 0.8rem; }
+}
+
+@media (max-width: 420px) {
+  .crimes-grid { grid-template-columns: 1fr; }
+}

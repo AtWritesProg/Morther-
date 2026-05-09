@@ -1,0 +1,151 @@
+.reactions {
+  background: var(--cream);
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 38px,
+      rgba(139, 99, 86, 0.04) 39px
+    );
+  padding: 80px 20px 100px;
+}
+
+.reactions-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* ---- HEADER ---- */
+.reactions-header {
+  text-align: center;
+}
+
+.reactions-label {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--warm-brown-light);
+  display: block;
+  margin-bottom: 10px;
+}
+
+.reactions-title {
+  font-family: var(--font-hand);
+  font-size: clamp(2.4rem, 7vw, 4rem);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.reactions-sub {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--ink-light);
+  font-style: italic;
+  margin-top: 10px;
+}
+
+/* ---- GRID ---- */
+.reactions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 36px 24px;
+}
+
+/* ---- WRAP ---- */
+.reaction-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ---- BUTTON ---- */
+.reaction-btn {
+  font-family: var(--font-hand);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+  border: none;
+  padding: 18px 20px 14px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  box-shadow: 2px 3px 0 rgba(139, 99, 86, 0.3), 4px 6px 14px rgba(0,0,0,0.1);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  clip-path: polygon(
+    0% 2%, 1% 0%, 99% 1%, 100% 2%,
+    99% 98%, 98% 100%, 2% 99%, 0% 98%
+  );
+}
+
+.reaction-btn:hover {
+  box-shadow: 3px 5px 0 rgba(139, 99, 86, 0.35), 6px 8px 18px rgba(0,0,0,0.14);
+  filter: brightness(0.97);
+}
+
+.reaction-btn:active {
+  box-shadow: 1px 1px 0 rgba(139, 99, 86, 0.3);
+}
+
+/* Shake animation */
+.reaction-btn--shake {
+  animation: paper-shake 0.4s ease forwards;
+}
+
+@keyframes paper-shake {
+  0%   { transform: rotate(var(--rot, 0deg)) translateX(0); }
+  15%  { transform: rotate(var(--rot, 0deg)) translateX(-5px); }
+  30%  { transform: rotate(var(--rot, 0deg)) translateX(5px); }
+  45%  { transform: rotate(var(--rot, 0deg)) translateX(-4px); }
+  60%  { transform: rotate(var(--rot, 0deg)) translateX(3px); }
+  75%  { transform: rotate(var(--rot, 0deg)) translateX(-2px); }
+  100% { transform: rotate(var(--rot, 0deg)) translateX(0); }
+}
+
+/* ---- NOTE POPUP ---- */
+.reaction-note {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+  background: #fffae8;
+  border: 1px solid rgba(139, 99, 86, 0.2);
+  padding: 20px 16px 14px;
+  width: 220px;
+  z-index: 10;
+  box-shadow: 3px 4px 0 rgba(139, 99, 86, 0.15), 5px 8px 20px rgba(0,0,0,0.12);
+  font-family: var(--font-hand);
+  font-size: 1rem;
+  color: var(--ink);
+  line-height: 1.45;
+  animation: note-pop 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  pointer-events: none;
+}
+
+@keyframes note-pop {
+  from { opacity: 0; transform: translateX(-50%) rotate(-1deg) scale(0.85) translateY(-6px); }
+  to   { opacity: 1; transform: translateX(-50%) rotate(-1deg) scale(1)    translateY(0); }
+}
+
+/* ---- FOOTER NOTE ---- */
+.reactions-note-footer {
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--ink-light);
+  font-style: italic;
+  opacity: 0.7;
+}
+
+/* ---- MOBILE ---- */
+@media (max-width: 600px) {
+  .reactions { padding: 60px 16px 80px; }
+  .reactions-grid { grid-template-columns: 1fr 1fr; gap: 28px 16px; }
+  .reaction-btn { font-size: 0.95rem; padding: 14px 12px 12px; }
+  .reaction-note { width: 180px; font-size: 0.9rem; }
+}
